@@ -7,14 +7,14 @@ import qs from 'qs';
 const Item = () => {
 
     const router = useRouter()
-    const { id } = router.query
+    const { slug } = router.query
 
     const [speciality, setSpeciality] = useState({})
     const [deleted, setDeleted] = useState(false)
     const [created, setCreated] = useState({})
     
     useEffect(() => {    
-        axios.get(`${API}/especialidades/${id}`)
+        axios.get(`${API}/especialidades/${slug}`)
           .then(function (response) {
             
             console.log(response.data.detalle[0]);
@@ -23,7 +23,7 @@ const Item = () => {
           .catch(function (error) {
             console.log(error);
           })
-      }, [id])
+      }, [slug])
 
       
       const handleChange = e => {

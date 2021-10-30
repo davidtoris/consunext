@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import {API} from "../api"
 import axios from 'axios';
+import Link from 'next/link'
 
 const Especialities = () => {
 
@@ -35,9 +36,10 @@ const Especialities = () => {
          {
              specialities.map(algo => (
                  <li>
-                     <a href={`especialidades/${algo.id}`}>
+                     <Link href={`especialidades/${algo.id}`}>
+                       <a>h</a>
+                     </Link>
                      {algo.id}. {algo.especialidad}
-                     </a>
                 </li>
              ))
          }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {API} from "../../api"
+import {API} from "../api"
 import axios from 'axios';
 
 const Especialities = () => {
@@ -35,7 +35,7 @@ const Especialities = () => {
          {
              specialities.map(algo => (
                  <li>
-                     <a href={`specialities/${algo.id}`}>
+                     <a href={`especialidades/${algo.id}`}>
                      {algo.id}. {algo.especialidad}
                      </a>
                 </li>

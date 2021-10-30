@@ -37,7 +37,7 @@ export default function Home() {
       </div>
       <div className="container mx-auto flex">
 
-        <Link href="/specialities"><a>Especialidades</a></Link>
+        <Link href="/specialities"><a>Cambialo</a></Link>
         <div className="grid grid-cols-4 gap-10">
          {
            cursos.map(curso => (

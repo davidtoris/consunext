@@ -35,7 +35,7 @@ const Especialities = () => {
             <ul>         
          {
              specialities.map(algo => (
-                 <li>
+                 <li key={algo.id}>
                      <Link href={`especialidades/${algo.id}`}>
                        <a>h</a>
                      </Link>

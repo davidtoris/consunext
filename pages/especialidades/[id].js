@@ -3,18 +3,19 @@ import {API} from "../../api"
 import axios from 'axios';
 import { useRouter } from 'next/router'
 import qs from 'qs';
+import Link from 'next/link'
 
 const Item = () => {
 
     const router = useRouter()
-    const { slug } = router.query
+    const { id } = router.query
 
     const [speciality, setSpeciality] = useState({})
     const [deleted, setDeleted] = useState(false)
     const [created, setCreated] = useState({})
     
     useEffect(() => {    
-        axios.get(`${API}/especialidades/${slug}`)
+        axios.get(`${API}/especialidades/${id}`)
           .then(function (response) {
             
             console.log(response.data.detalle[0]);
@@ -23,7 +24,7 @@ const Item = () => {
           .catch(function (error) {
             console.log(error);
           })
-      }, [slug])
+      }, [id])
 
       
       const handleChange = e => {
@@ -64,9 +65,12 @@ const Item = () => {
     return (
 
         <>
+        {id ? (
+        <div>
         <h1 className="text-4xl">{speciality.especialidad}</h1>
-    
         <h1 className="text-4xl" onClick={handleDelete}>Borrar</h1>
+        
+        
         {deleted ? "Se ha borrado" : "" }
         <form>
             <input 
@@ -86,9 +90,15 @@ const Item = () => {
                 onClick={handleCreate}
             />
         </form>
+        <Link href="/especialidades">
+            <a>Regresar</a>
+        </Link>
+        </div>
 
+        ) : "Cargando...."}
         
         </>
+
     )
 }
 

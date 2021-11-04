@@ -27,8 +27,7 @@ const Item = () => {
                 console.log(res.data.detalle[0]);
                 console.log(id);
                 console.log("antes")
-                // console.log(res.data.detalle[0]);
-                // setSpeciality(res.data.detalle[0]);
+                setSpeciality(res.data.detalle[0]);
               })
               .catch( err => {
                 console.log("NO se pudo",err);

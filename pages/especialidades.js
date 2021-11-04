@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {API} from "../api"
 import axios from 'axios';
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const Especialities = () => {
 
@@ -20,6 +21,7 @@ const Especialities = () => {
   const [specialities, setSpecialities] = useState([])
 
   console.log(API);
+  const router = useRouter();
   
   
   return (
@@ -35,10 +37,8 @@ const Especialities = () => {
             <ul>         
          {
              specialities.map(algo => (
-                 <li key={algo.id}>
-                     <Link href={`especialidades/${algo.id}`}>
-                       <a>h</a>
-                     </Link>
+                 <li onClick={ () => router.push(`especialidades/${algo.id}`)} key={algo.id}>
+                     
                      {algo.id}. {algo.especialidad}
                 </li>
              ))

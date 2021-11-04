@@ -37,7 +37,7 @@ const Especialities = () => {
             <ul>         
          {
              specialities.map(algo => (
-                 <li onClick={ () => router.push(`especialidades/${algo.id}`)} key={algo.id}>
+                 <li onClick={ () => router.push(`doc/${algo.id}`)} key={algo.id}>
                      
                      {algo.id}. {algo.especialidad}
                 </li>

@@ -7,23 +7,36 @@ import Link from 'next/link'
 
 const Item = () => {
 
-    const router = useRouter()
-    const { id } = router.query
-
+    
     const [speciality, setSpeciality] = useState({})
     const [deleted, setDeleted] = useState(false)
     const [created, setCreated] = useState({})
+    const router = useRouter()
+    const { id } = router.query
+    console.log(router.query)
+    console.log("despues")
     
     useEffect(() => {    
-        axios.get(`${API}/especialidades/${id}`)
-          .then(function (response) {
+        
+        const getSpecialities = async ()=> {
             
-            console.log(response.data.detalle[0]);
-            setSpeciality(response.data.detalle[0]);
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
+            await axios.get(`${API}/especialidades/${id}`)
+            // await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+              .then( res => {  
+                
+                console.log(res.data.detalle[0]);
+                console.log(id);
+                console.log("antes")
+                // console.log(res.data.detalle[0]);
+                // setSpeciality(res.data.detalle[0]);
+              })
+              .catch( err => {
+                console.log("NO se pudo",err);
+              })
+        }
+
+        getSpecialities()
+        
       }, [id])
 
       

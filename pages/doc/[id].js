@@ -1,24 +1,17 @@
-import axios from 'axios';
+
 import { useRouter } from 'next/router'
-
-
+import {API} from "../../api"
 
 const Post = () => {
     const router = useRouter()
     const { id } = router.query
     
     const getSpecialities = async ()=> {
-        await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
-            .then( resp => {  
-            
-            console.log(resp);
-            console.log(id);
-            console.log("antes")
-            // setSpeciality(res.data.detalle[0]);
-            })
-            .catch( err => {
-            console.log("NO se pudo",err);
-            })
+        const res = await fetch(`${API}/especialidades`);
+        const data = await res.json()
+        const detalle = data.detalle
+
+        console.log(detalle)
         }
 
         getSpecialities()

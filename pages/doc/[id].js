@@ -3,6 +3,7 @@ import {API} from "../../api"
 import axios from 'axios';
 import { useRouter } from 'next/router'
 import qs from 'qs';
+import Link from 'next/link'
 
 const Item = () => {
 
@@ -19,14 +20,14 @@ const Item = () => {
         
         const getSpecialities = async ()=> {
             
-            await axios.get(`${API}/especialidades/${id}`)
-            // await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
-              .then( res => {  
+            // await axios.get(`${API}/especialidades/${id}`)
+            await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+              .then( resp => {  
                 
-                console.log(res.data.detalle[0]);
+                console.log(resp);
                 console.log(id);
                 console.log("antes")
-                setSpeciality(res.data.detalle[0]);
+                // setSpeciality(res.data.detalle[0]);
               })
               .catch( err => {
                 console.log("NO se pudo",err);
@@ -104,11 +105,9 @@ const Item = () => {
                 onClick={handleCreate}
             />
         </form>
-        <div onClick={ () => router.push(`/especialidades`)}>
-
-            Regresar            
-        
-        </div>
+        <Link href="/especialidades">
+            <a>Regresar</a>
+        </Link>
 
         </div>
 

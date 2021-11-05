@@ -1,38 +1,25 @@
 import {API} from "../../api"
 
-export const getStaticPaths = async () => {
-  const res = await fetch(`${API}/especialidades`);
+
+export const getServerSideProps = async () => {
+  const res = await fetch(`${API}/especialidades/1`);
   const data = await res.json()
   const detalle = data.detalle
-
-  const paths = detalle.map (algo => {
-      return {
-          params : { id: algo.id.toString() }
-      }
-  })
-
-  return {
-      paths,
-      fallback: false
-  }
-} 
-
-export const getStaticProps = async (context) => {
-  const id = context.params.id;
-  const res = await fetch(`${API}/especialidades/${id}`);  
-  const data = await res.json()
-  const detalle = data.detalle[0]
-
-    return {
-        props : { algo : detalle }
-    }
+  return { props : { detalle } }
 } 
 
 
-function Details({ algo }) {
+function Details({ detalle }) {
+
+    console.log(detalle)
     return (
+        // <h1>hola</h1>
         <div className="text-5xl">
-            {algo.especialidad}
+            {detalle.map( (item, index) => (
+                
+                <div key={index}>{item.especialidad}</div>
+            ))}
+            
         </div>
     )
 }

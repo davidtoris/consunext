@@ -20,23 +20,6 @@ export default function Home() {
 
   const [cursos, setCursos] = useState([])
 
-  const algo = async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts/22");
-    const data = await res.json()
-    console.log(data)
-  }
-
-  algo();
-
-  const otraCosa = async () => {
-    const res = await fetch("http://localhost:8080/apirest-consufarma/especialidades/2");
-    const data = await res.json()
-    const algo = data.detalle[0]
-    console.log(data)
-    console.log(algo)
-  }
-
-  otraCosa();
   
   return (
     <>

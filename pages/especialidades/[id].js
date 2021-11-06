@@ -1,4 +1,5 @@
 import {API} from "../../api"
+import Link from 'next/link'
 
 export const getServerSideProps = async (context) => {
   const id = context.params.id;
@@ -16,7 +17,9 @@ function Details({ detalle }) {
             {detalle.map( (item, index) => (
                 <div key={index}>{item.especialidad}</div>
             ))}
-            
+            <Link href="/especialidades">
+                <a className="text-2xl">Regresar</a>
+              </Link>
         </div>
     )
 }
